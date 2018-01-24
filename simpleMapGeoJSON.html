@@ -7,7 +7,11 @@
 	<!-- the following CSS is used to set the size of the Map -->
 	<style type="text/css">
 		#mapid { height: 180px; }
-	</style>	
+	</style>
+	<!--the following links incorporate the CSS required for custom icon creation-->
+	<link rel="stylesheet"href="ionicons.min.css">
+	<link rel="stylesheet"href="leaflet.awesome-markers.css">
+	<script src="leaflet.awesome-markers.js"></script>
 </head>
 <body>
 		<!--the mapid div will hold the map-->
@@ -23,7 +27,11 @@ basemap tiles -->
 				//create a geoJson feature-
 				var geojsonFeature = {"type":"Feature","properties":{"name":"London","popupContent":"This is where UCL is based"},"geometry":{"type":"Point","coordinates":[-0.134040,51.524559]}};
 				//and add it to the map
-				L.geoJson(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+""+geojsonFeature.properties.popupContent+"<b>");
+				L.geoJsonFeature,{
+					pointToLayer:function(feature,latlng){
+						return L.marker(latlng,icon:testMarkerPink});
+					}
+				}).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+""+geojsonFeature.properties.popupContent+"<b>");
 				//create a custom popup
 				var popup = L.popup();
 				//create an event detector to wait for the user's click event and then use the popup to show them where they clicked
@@ -35,7 +43,9 @@ basemap tiles -->
 				}
 				
 				//now add the click event detector to the map
-				mymap.on('click',onMapClick);					
+				mymap.on('click',onMapClick);
+				//create the custom Marker icon
+				var testMarkerPink = L.awesome-markers.icon({icon:'play',markerColor:'pink'});
 		</script>
 </body>
 </html>
