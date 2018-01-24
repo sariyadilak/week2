@@ -27,7 +27,7 @@ basemap tiles -->
 				//create a geoJson feature-
 				var geojsonFeature = {"type":"Feature","properties":{"name":"London","popupContent":"This is where UCL is based"},"geometry":{"type":"Point","coordinates":[-0.134040,51.524559]}};
 				//and add it to the map
-				L.geoJsonFeature,{pointToLayer:function(feature,latlng){return L.marker(latlng,{icon:testMarkerPink});}}).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+""+geojsonFeature.properties.popupContent+"<b>");
+				L.geoJSON(geojsonFeature,{pointToLayer:function(feature,latlng){return L.marker(latlng,{icon:testMarkerPink});}}).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+""+geojsonFeature.properties.popupContent+"<b>");
 				//create a custom popup
 				var popup = L.popup();
 				//create an event detector to wait for the user's click event and then use the popup to show them where they clicked
