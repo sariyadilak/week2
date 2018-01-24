@@ -29,7 +29,7 @@ basemap tiles -->
 				//and add it to the map
 				L.geoJsonFeature,{
 					pointToLayer:function(feature,latlng){
-						return L.marker(latlng,icon:testMarkerPink});
+						return L.marker(latlng,{icon:testMarkerPink});
 					}
 				}).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+""+geojsonFeature.properties.popupContent+"<b>");
 				//create a custom popup
@@ -45,7 +45,7 @@ basemap tiles -->
 				//now add the click event detector to the map
 				mymap.on('click',onMapClick);
 				//create the custom Marker icon
-				var testMarkerPink = L.awesome-markers.icon({icon:'play',markerColor:'pink'});
+				var testMarkerPink = L.AwesomeMarkers.icon({icon:'play',markerColor:'pink'});
 		</script>
 </body>
 </html>
